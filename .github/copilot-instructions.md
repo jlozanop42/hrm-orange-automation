@@ -31,10 +31,18 @@ The following instruction files provide detailed guidance (create these using th
 - **CI/CD**: Continuous integration and deployment guidelines
 - **Data Management**: Test data strategies and fixtures
 
+## Custom Agents
+
+The framework includes specialized agents for specific workflows:
+
+- **@page-documenter**: Creates structured markdown documentation for web pages based on natural language descriptions. Use when you need to document page layouts and components before creating page objects.
+
 ## Getting Help
 
 - Use `@generate-instructions-file` to create new instruction files
+- Use `@page-documenter` to document page structures
 - Instruction files will be stored in `.github/instructions/`
+- Page documentation will be stored in `/pages-description/`
 - Each file applies to specific file patterns using the `applyTo` frontmatter
 
 ## Notes
