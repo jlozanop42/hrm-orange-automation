@@ -16,7 +16,7 @@ def pytest_addoption(parser):
         pytest --browser chromium
         pytest --browser firefox
         pytest --browser webkit
-        pytest --headed  # Run in headed mode (visible browser) mmmm
+        pytest --headed  # Run in headed mode (visible browser)
     """
     parser.addoption(
         "--browser",
