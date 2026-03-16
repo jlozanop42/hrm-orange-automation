@@ -21,15 +21,35 @@ When working on this project, AI agents should understand:
 
 ## Instruction Files
 
-The following instruction files provide detailed guidance (create these using the `@generate-instructions-file` agent):
+The following instruction files are available in `.github/instructions/`:
 
-- **Tech Stack**: Technologies, frameworks, and dependencies used
-- **Architecture**: Framework structure, design patterns, and organization
-- **Testing Rules**: Test writing standards, naming conventions, assertions
-- **Page Objects**: Page Object Model patterns and best practices
+### Active Instructions
+- **[Tech Stack](../.github/instructions/tech-stack.instructions.md)**: Technologies, frameworks, and dependencies used (Python 3.14, Playwright, pipenv)
+- **[Architecture](../.github/instructions/architecture.instructions.md)**: Framework structure, design patterns, and organization
+- **[Testing Rules](../.github/instructions/testing.instructions.md)**: Test writing standards, naming conventions, assertions
+- **[Page Objects](../.github/instructions/page-objects.instructions.md)**: Page Object Model patterns and best practices
+
+### Future Instructions (To Be Created)
 - **API Testing**: API automation patterns and utilities
 - **CI/CD**: Continuous integration and deployment guidelines
 - **Data Management**: Test data strategies and fixtures
+
+Use `@generate-instructions-file` to create additional instruction files as needed.
+
+## Developer Background & Learning Preferences
+
+**Experience Level:**
+- New to Python and Playwright
+- Experienced with automation testing using Selenium
+- Familiar with test automation concepts and patterns
+
+**Code Generation Guidelines:**
+When generating or modifying Python code, ALWAYS provide:
+1. **Python Concepts Explanation**: Brief explanation of any new Python-specific concepts, syntax, or patterns used (e.g., decorators, context managers, list comprehensions, type hints)
+2. **Playwright Concepts Explanation**: Brief explanation of Playwright-specific features or patterns used (e.g., auto-waiting, locator strategies, page fixtures)
+3. **Selenium vs Playwright**: When relevant, highlight key differences from Selenium approach
+
+Keep explanations concise but clear, focusing on practical understanding.
 
 ## Custom Agents
 
