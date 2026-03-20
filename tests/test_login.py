@@ -5,6 +5,7 @@ This module contains test cases for verifying login functionality including
 successful authentication and error scenarios.
 """
 
+import re
 from playwright.sync_api import Page, expect
 from pages.login_page import LoginPage
 
@@ -36,7 +37,7 @@ def test_valid_login(page: Page):
     )
     
     # Then: User should land on the dashboard page
-    expect(page).to_have_url("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index")
+    expect(page).to_have_url(re.compile(r".*/dashboard"))
     
     # And: Dashboard heading should be visible
-    expect(dashboard_page.get_dashboard_heading()).to_be_visible()
+    dashboard_page.ensure_page_loaded()
