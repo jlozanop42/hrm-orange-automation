@@ -66,6 +66,17 @@ Top of page
     └── Facebook
 ```
 
+## Behavior & Interactions
+
+### Successful Login
+- **Action**: User enters valid username and password, then clicks the Login button
+- **Result**: Application redirects to the dashboard page
+- **Note**: No success message is displayed - the navigation itself indicates successful authentication
+
+### Forgot Password Flow
+- **Action**: User clicks the "Forgot your password?" link
+- **Result**: User is redirected to a different page for password recovery
+
 ## Notes
 - All form inputs have associated labels for accessibility
 - Social media links are specifically positioned at bottom left

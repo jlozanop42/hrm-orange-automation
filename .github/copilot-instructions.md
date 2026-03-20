@@ -51,11 +51,16 @@ When generating or modifying Python code, ALWAYS provide:
 
 Keep explanations concise but clear, focusing on practical understanding.
 
+**Automatic Documentation:**
+After generating or modifying Python/Playwright code that introduces new concepts (decorators, type hints, Playwright locator strategies, fixtures, etc.), automatically invoke the `@create-python-doc` subagent to create simple reference documentation. Pass the generated code and any new concepts used as context. This helps build a knowledge base over time for developers learning Python and Playwright.
+
 ## Custom Agents
 
 The framework includes specialized agents for specific workflows:
 
 - **@page-documenter**: Creates structured markdown documentation for web pages based on natural language descriptions. Use when you need to document page layouts and components before creating page objects.
+
+- **@create-python-doc**: Creates simple, beginner-friendly documentation for Python and Playwright concepts used in generated code. Automatically invoked after generating new Python/Playwright code to explain new concepts with practical examples.
 
 ## Getting Help
 
