@@ -32,7 +32,7 @@ class LoginPage:
         Returns:
             Locator: Playwright locator for the forgot password link
         """
-        return self.page.get_by_role("link", name="Forgot your password?")
+        return self.page.locator(selector = "div[class*='forgot'] p")
     
     def navigate(self):
         """
