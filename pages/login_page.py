@@ -24,6 +24,16 @@ class LoginPage:
     def __init__(self, page: Page):
         self.page = page
     
+    @property
+    def forgot_password_link(self):
+        """
+        Get the 'Forgot your password?' link locator.
+        
+        Returns:
+            Locator: Playwright locator for the forgot password link
+        """
+        return self.page.locator(selector = "div[class*='forgot'] p")
+    
     def navigate(self):
         """
         Navigate to the login page.
@@ -95,3 +105,19 @@ class LoginPage:
         
         # Return self since we stay on login page for failed login
         return self
+    
+    def click_forgot_password(self):
+        """
+        Click the 'Forgot your password?' link to navigate to password reset page.
+        
+        This method clicks the forgot password link which navigates to the
+        password reset request page. Use this to access password recovery flow.
+        
+        Navigation occurs to: /auth/requestPasswordResetCode
+        
+        Returns:
+            None: Navigation happens but no page object is returned yet
+                  (PasswordResetPage can be added when needed)
+        """
+        # Click the forgot password link using the property
+        self.forgot_password_link.click()

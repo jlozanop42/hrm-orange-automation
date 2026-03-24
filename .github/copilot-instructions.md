@@ -62,12 +62,18 @@ The framework includes specialized agents for specific workflows:
 
 - **@create-python-doc**: Creates simple, beginner-friendly documentation for Python and Playwright concepts used in generated code. Automatically invoked after generating new Python/Playwright code to explain new concepts with practical examples.
 
+- **@test-case-generator**: Generates comprehensive test case documentation organized by category folders (positive/, negative/, edge/, ui-ux/). Groups similar scenarios into single test case files. Creates structured markdown in project-docs/test-cases/[feature]/[category]/[test-case-name].md with an overview.md index file.
+
 ## Getting Help
 
 - Use `@generate-instructions-file` to create new instruction files
 - Use `@page-documenter` to document page structures
+- Use `@test-case-generator` to create comprehensive test case documentation
 - Instruction files will be stored in `.github/instructions/`
 - Page documentation will be stored in `/pages-description/`
+- Test case documentation will be organized in `project-docs/test-cases/[feature]/[category]/` with category folders (positive/, negative/, edge/, ui-ux/)
+- Each test case file groups similar scenarios together
+- Each feature includes an `overview.md` index file
 - Each file applies to specific file patterns using the `applyTo` frontmatter
 
 ## Notes
