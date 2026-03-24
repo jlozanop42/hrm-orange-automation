@@ -73,7 +73,7 @@ def test_forgot_password_navigation(page: Page):
     login_page.click_forgot_password()
     
     # Then: User should be redirected to the password reset request page
-    expect(page).to_have_url(re.compile(r".*\/auth\/requestPasswordResetCode"))
+    expect(page).to_have_url(re.compile(r".*/auth/requestPasswordResetCode$"))
     
     # And: Verify the expected full URL (for documentation purposes)
     # Expected: https://opensource-demo.orangehrmlive.com/web/index.php/auth/requestPasswordResetCode
