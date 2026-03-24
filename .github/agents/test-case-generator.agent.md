@@ -38,7 +38,7 @@ You are the **main orchestrator** that:
 3. **While user responds (or after)**, perform background searches:
    - **Look for existing page descriptions** in `/pages-description/` folder
    - **Determine the next available TC number** by scanning ALL existing test cases:
-     - Search for TC IDs in all existing test case files (test-cases/**/positive/, negative/, edge/, ui-ux/)
+     - Search for TC IDs in all existing test case files (project-docs/test-cases/**/positive/, negative/, edge/, ui-ux/)
      - Find the highest TC number used (e.g., if TC-LOGIN-010 exists, next is 011)
      - If no test cases exist yet, start from 001
      - **CRITICAL**: TC numbers are GLOBAL across all features, NOT per-feature
@@ -70,7 +70,7 @@ Context:
 - Success criteria: [what successful scenarios look like]
 
 Your task:
-1. Create test case files in test-cases/[feature]/positive/ directory
+1. Create test case files in project-docs/test-cases/[feature]/positive/ directory
 2. Each file = ONE test case with multiple scenarios (if applicable)
 3. Follow the test case format specified
 4. Use test case IDs starting from TC-[FEATURE]-[STARTING_NUMBER]
@@ -103,7 +103,7 @@ Context:
 - Invalid test data examples: [user-provided examples]
 
 Your task:
-1. Create test case files in test-cases/[feature]/negative/ directory
+1. Create test case files in project-docs/test-cases/[feature]/negative/ directory
 2. Group similar error scenarios into ONE test case file
 3. Follow the test case format specified
 4. Use test case IDs starting from TC-[FEATURE]-[STARTING_NUMBER]
@@ -135,7 +135,7 @@ Context:
 - Known edge behaviors: [how system handles edge cases]
 
 Your task:
-1. Create test case files in test-cases/[feature]/edge/ directory
+1. Create test case files in project-docs/test-cases/[feature]/edge/ directory
 2. Group similar edge scenarios into ONE test case file
 3. Follow the test case format specified
 4. Use test case IDs starting from TC-[FEATURE]-[STARTING_NUMBER]
@@ -168,7 +168,7 @@ Context:
 - Interaction behaviors: [field clearing, masking, etc.]
 
 Your task:
-1. Create test case files in test-cases/[feature]/ui-ux/ directory
+1. Create test case files in project-docs/test-cases/[feature]/ui-ux/ directory
 2. Group similar UI validation scenarios into ONE test case file
 3. Follow the test case format specified
 4. Use test case IDs starting from TC-[FEATURE]-[STARTING_NUMBER]
@@ -289,7 +289,7 @@ Brief description of what this test case validates.
 **IMPORTANT**: TC numbers are GLOBAL and unique across ALL features.
 
 **How to find the next TC number**:
-1. Search for all existing test case files in `test-cases/` directory (all subdirectories)
+1. Search for all existing test case files in `project-docs/test-cases/` directory (all subdirectories)
 2. Look for TC IDs in file content using pattern: `TC-[A-Z]+-[0-9]+`
 3. Extract all numbers and find the highest one
 4. Set `STARTING_TC_NUMBER = highest + 1`
@@ -297,7 +297,7 @@ Brief description of what this test case validates.
 
 **Example commands to help**:
 - Use grep_search or semantic_search to find existing TC IDs
-- Search for pattern like "Test Case ID" or "TC-" in test-cases/ directory
+- Search for pattern like "Test Case ID" or "TC-" in project-docs/test-cases/ directory
 - Parse and extract the numbers to find the maximum
 
 **Examples**:
@@ -453,7 +453,7 @@ Brief description of what this test case validates.
 Each sub-agent creates files in their designated category folder:
 
 ```
-test-cases/
+project-docs/test-cases/
 ├── [feature]/
 │   ├── positive/         ← Positive sub-agent creates files here
 │   │   ├── [test-case-name].md
@@ -470,7 +470,7 @@ test-cases/
 
 ### Real Example
 ```
-test-cases/
+project-docs/test-cases/
 ├── login/
 │   ├── positive/
 │   │   ├── successful-login.md
@@ -516,6 +516,227 @@ After all sub-agents complete, YOU create an `overview.md` file in the feature f
 - Document valid test data
 - Note system behaviors and dependencies
 - Include summary statistics (total test cases, breakdown by category)
+
+**Use this template for consistency:**
+
+```markdown
+# [Feature Name] - Test Cases Overview
+
+## Feature Description
+[Brief description of what the feature does and its purpose]
+
+---
+
+## Test Summary
+
+| Category | Test Cases | Scenarios | File Count |
+|----------|-----------|-----------|------------|
+| Positive | [count] | [count] | [count] |
+| Negative | [count] | [count] | [count] |
+| Edge | [count] | [count] | [count] |
+| UI/UX | [count] | [count] | [count] |
+| **Total** | **[sum]** | **[sum]** | **[sum]** |
+
+---
+
+## Valid Test Credentials
+
+| Field | Value |
+|-------|-------|
+| [Field Name] | `[value]` |
+| [Field Name] | `[value]` |
+
+**Important Notes**:
+- [Note about case sensitivity, special requirements, etc.]
+
+---
+
+## Expected URLs
+
+| Action | URL |
+|--------|-----|
+| [Action description] | `[URL]` |
+
+---
+
+## Test Case Index
+
+### Positive Test Cases
+
+| ID | Test Case | Priority | File |
+|----|-----------|----------|------|
+| TC-[FEATURE]-XXX | [Test Case Name] | High/Medium/Low | [filename.md](positive/filename.md) |
+
+**Coverage**: 
+- [Summary of what positive test cases cover]
+
+---
+
+### Negative Test Cases
+
+| ID | Test Case | Priority | File |
+|----|-----------|----------|------|
+| TC-[FEATURE]-XXX | [Test Case Name] | High/Medium/Low | [filename.md](negative/filename.md) |
+
+**Coverage**:
+- [Summary of what negative test cases cover]
+
+---
+
+### Edge Cases
+
+| ID | Test Case | Priority | File |
+|----|-----------|----------|------|
+| TC-[FEATURE]-XXX | [Test Case Name] | High/Medium/Low | [filename.md](edge/filename.md) |
+
+**Coverage**:
+- [Summary of what edge test cases cover]
+
+---
+
+### UI/UX Test Cases
+
+| ID | Test Case | Priority | File |
+|----|-----------|----------|------|
+| TC-[FEATURE]-XXX | [Test Case Name] | High/Medium/Low | [filename.md](ui-ux/filename.md) |
+
+**Coverage**:
+- [Summary of what UI/UX test cases cover]
+
+---
+
+## Known System Behaviors
+
+### [Category Name]
+- ✅ [Expected successful behavior]
+- ❌ [Expected failure behavior]
+
+### [Category Name]
+- [System behavior details]
+
+---
+
+## Test Execution Guidelines
+
+### Recommended Execution Order
+
+1. **Positive Test Cases** (TC-[FEATURE]-XXX to TC-[FEATURE]-XXX)
+   - [Why run these first]
+   - Priority: Run first
+
+2. **Negative Test Cases** (TC-[FEATURE]-XXX to TC-[FEATURE]-XXX)
+   - [Purpose]
+   - Priority: Run second
+
+3. **Edge Cases** (TC-[FEATURE]-XXX to TC-[FEATURE]-XXX)
+   - [Purpose]
+   - Priority: Run third
+
+4. **UI/UX Cases** (TC-[FEATURE]-XXX to TC-[FEATURE]-XXX)
+   - [Purpose]
+   - Priority: Run last
+
+### Prerequisites
+- [Prerequisite 1]
+- [Prerequisite 2]
+
+### Test Data Requirements
+- [Data requirement 1]
+- [Data requirement 2]
+
+---
+
+## Automation Considerations
+
+### Wait Strategies
+- **[Wait type]** for [what to wait for]
+
+### Verification Techniques
+- **[Technique]**: [How to verify]
+
+### Selectors and Locators
+- [Guidance on locators]
+
+### Test Data Management
+- [How to manage test data]
+
+---
+
+## Scope Exclusions
+
+### Not Covered
+- ❌ [Feature not tested - reason]
+- ❌ [Feature not tested - reason]
+
+---
+
+## Dependencies
+
+### Page Dependencies
+- **[Page Name]**: [Why it's needed]
+
+### External Dependencies
+- [Dependency] or None
+
+---
+
+## Related Documentation
+
+| Document | Location | Purpose |
+|----------|----------|---------|
+| [Doc Name] | [path] | [Purpose] |
+
+---
+
+## Notes
+
+### Test Case Naming Convention
+- **Format**: `TC-[FEATURE]-XXX` where XXX is a sequential number
+- **File Naming**: lowercase-with-hyphens.md
+- **Grouping**: Similar scenarios grouped into single test case files
+
+### Priority Levels
+| Priority | Description |
+|----------|-------------|
+| **High** | Critical functionality that must work for the system to be usable |
+| **Medium** | Important functionality that affects user experience |
+| **Low** | Nice-to-have validations or less common scenarios |
+
+### Category Definitions
+| Category | Purpose |
+|----------|---------|
+| **Positive** | Tests that verify expected successful behavior |
+| **Negative** | Tests that verify proper error handling for invalid inputs |
+| **Edge** | Tests that verify boundary conditions and unusual inputs |
+| **UI/UX** | Tests that verify visual elements and user interface behavior |
+
+---
+
+## Maintenance
+
+### Updating Test Cases
+When system behavior changes:
+1. Update affected test case files in respective category folders
+2. Update this overview with new expectations
+3. Update test data tables if credentials or URLs change
+4. Add new test cases with next sequential TC number
+
+### Adding New Test Cases
+1. Determine appropriate category (positive/negative/edge/ui-ux)
+2. Check if scenario fits into existing test case file or needs new file
+3. Use next available TC-[FEATURE]-XXX number
+4. Update this overview file with new test case entry
+5. Update summary statistics
+
+---
+
+**Last Updated**: [Date]  
+**Total Test Cases**: [Count]  
+**Total Scenarios**: [Count]  
+**Status**: ✅ Complete
+```
+
+**Adapt this template** based on the feature and information gathered from the user.
 
 ## Best Practices
 
@@ -631,7 +852,7 @@ Each sub-agent needs the following information:
 3. Supplement user responses with documentation details
 
 **Step 5**: Determine the next available TC number (CRITICAL!)
-1. Search all existing test case files in `test-cases/` directory
+1. Search all existing test case files in `project-docs/test-cases/` directory
 2. Find all TC IDs (pattern: TC-\[FEATURE\]-\[NUMBER\])
 3. Identify the highest number used across ALL features
 4. Set starting TC number = highest + 1 (or 001 if none exist)
@@ -669,12 +890,16 @@ Invoke sub-agents in this order, tracking TC ID sequence:
 
 ### Phase 4: Create Overview File
 1. Aggregate all results from sub-agents
-2. Create `test-cases/login/overview.md` containing:
-   - Complete test case index organized by category
-   - Links to all generated files
-   - Test execution guidelines
-   - Valid test data
+2. Create `project-docs/test-cases/login/overview.md` using the **Overview File Template** (see "Overview File" section above)
+3. Include:
+   - Complete test case index organized by category with TC IDs and file links
+   - Test summary statistics (test cases, scenarios, file counts per category)
+   - Valid test credentials and expected URLs
+   - Test execution guidelines and recommended order
    - Known system behaviors
+   - Automation considerations
+   - Scope exclusions and dependencies
+   - Related documentation links
 
 ### Phase 5: Final Report
 Provide the user with:
@@ -684,7 +909,7 @@ Provide the user with:
 
 **Expected output structure** (example assuming TC-001 through TC-010 already exist):
 ```
-test-cases/dashboard/
+project-docs/test-cases/dashboard/
 ├── positive/
 │   ├── successful-navigation.md (TC-DASHBOARD-011)
 │   └── widget-display.md (TC-DASHBOARD-012)
@@ -711,15 +936,15 @@ test-cases/dashboard/
 
 ### Examples to Share:
 
-**File**: `test-cases/login/negative/invalid-credentials.md`  
+**File**: `project-docs/test-cases/login/negative/invalid-credentials.md`  
 **Test Case ID**: `TC-LOGIN-003`  
 **Contains**: 3 scenarios (invalid username, invalid password, both invalid)
 
-**File**: `test-cases/login/negative/required-fields.md`  
+**File**: `project-docs/test-cases/login/negative/required-fields.md`  
 **Test Case ID**: `TC-LOGIN-004`  
 **Contains**: 3 scenarios (empty username, empty password, both empty)
 
-**File**: `test-cases/login/edge/whitespace-handling.md`  
+**File**: `project-docs/test-cases/login/edge/whitespace-handling.md`  
 **Test Case ID**: `TC-LOGIN-005`  
 **Contains**: Multiple scenarios (leading spaces, trailing spaces, only whitespace)
 
@@ -793,8 +1018,8 @@ Before completing, ensure:
 - [ ] **TC IDs are sequential and globally unique** - continue from highest existing number
 - [ ] **TC IDs are sequential across all categories within this feature** (no gaps or duplicates)
 - [ ] **Collected results from all sub-agents** (file paths, TC IDs, descriptions)
-- [ ] **Created overview.md file** with complete index
-- [ ] Verified directory structure exists: test-cases/[feature]/positive/, negative/, edge/, ui-ux/
+- [ ] **Created overview.md file using the Overview File Template** with complete index, statistics, and all sections
+- [ ] Verified directory structure exists: project-docs/test-cases/[feature]/positive/, negative/, edge/, ui-ux/
 - [ ] Provided user with final summary of test cases created
 - [ ] No test case files were created by you directly (all delegated to sub-agents)
 - [ ] No assumptions were made - all information came from user or documentation
@@ -806,7 +1031,7 @@ When invoking sub-agents, ensure each prompt includes:
 1. **Clear role definition**: "You are generating [CATEGORY] test case documentation..."
 2. **Complete context**: Feature name, page description, relevant requirements **gathered from user responses**
 3. **Starting TC ID**: "Use test case IDs starting from TC-[FEATURE]-[NUMBER]" where NUMBER is the next available global TC number
-4. **Directory instruction**: "Create files in test-cases/[feature]/[category]/"
+4. **Directory instruction**: "Create files in project-docs/test-cases/[feature]/[category]/"
 5. **Format reference**: Include or reference the test case file structure
 6. **Grouping guidance**: "Group similar scenarios into ONE test case file"
 7. **Return requirement**: "Return a summary listing files created, TC IDs assigned, and descriptions"
