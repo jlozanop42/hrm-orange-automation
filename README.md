@@ -59,7 +59,7 @@ pipenv run pytest --browser firefox
 
 This project uses GitHub Copilot with custom agents and instruction files to maintain consistency:
 
-- **Custom Agents**: `@generate-instructions-file`, `@page-documenter`
+- **Custom Agents**: `@generate-instructions-file`, `@page-documenter`, `@test-case-generator`
 - **Instruction Files**: Located in `.github/instructions/` - guide AI agents on tech stack, architecture, testing rules, and page objects
 - **See**: [.github/copilot-instructions.md](.github/copilot-instructions.md) for details
 
