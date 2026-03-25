@@ -34,6 +34,19 @@ class LoginPage:
         """
         return self.page.locator(selector = "div[class*='forgot'] p")
     
+    @property
+    def error_message(self):
+        """
+        Get the error message banner locator.
+        
+        The error banner appears after failed login attempts with invalid credentials.
+        It's a div with class containing 'alert' and displays "Invalid credentials".
+        
+        Returns:
+            Locator: Playwright locator for the error message banner
+        """
+        return self.page.locator("div[class*='alert'] p")
+    
     def navigate(self):
         """
         Navigate to the login page.
@@ -121,3 +134,30 @@ class LoginPage:
         """
         # Click the forgot password link using the property
         self.forgot_password_link.click()
+    
+    def ensure_invalid_login_error_displayed(self):
+        """
+        Ensure invalid login error is displayed and fields are cleared.
+        
+        This method verifies the complete error state after a failed login attempt:
+        - Error message "Invalid credentials" is visible
+        - User remains on login page (URL hasn't changed)
+        - Both username and password fields are cleared
+        
+        Use this after calling login_with_invalid_credentials() to verify
+        the expected error handling behavior.
+        
+        This is a UI invariant check - it enforces that the page is in the
+        correct error state, not business logic.
+        """
+        # Assert: Error message is displayed
+        expect(self.error_message).to_contain_text("Invalid credentials")
+        
+        # Assert: User remains on login page (URL doesn't change to dashboard)
+        expect(self.page).to_have_url(re.compile(r".*/auth/login$"))
+        
+        # Assert: Username field is cleared (empty value)
+        expect(self.page.get_by_role("textbox", name="Username")).to_have_value("")
+        
+        # Assert: Password field is cleared (empty value)
+        expect(self.page.get_by_role("textbox", name="Password")).to_have_value("")

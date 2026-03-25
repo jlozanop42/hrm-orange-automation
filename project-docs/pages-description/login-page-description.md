@@ -21,6 +21,7 @@ The login page is the entry point for users to access the HR Orange system. It p
 - **Input Field**: Username
   - Label: "Username"
   - Type: Text input
+  - Case-sensitivity: Not case-sensitive (e.g., "Admin", "ADMIN", and "admin" are treated identically)
 - **Input Field**: Password
   - Label: "Password"
   - Type: Password input
@@ -83,6 +84,7 @@ Top of page
 - **Action**: User enters valid username and password, then clicks the Login button
 - **Result**: Application redirects to the dashboard page
 - **Note**: No success message is displayed - the navigation itself indicates successful authentication
+- **Username Behavior**: Username input is case-insensitive ("Admin", "ADMIN", and "admin" are all accepted as the same credentials)
 
 ### Invalid Credentials
 - **Action**: User enters invalid username OR invalid password and clicks the Login button
