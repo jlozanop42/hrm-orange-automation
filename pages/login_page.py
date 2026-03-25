@@ -154,7 +154,7 @@ class LoginPage:
         expect(self.error_message).to_contain_text("Invalid credentials")
         
         # Assert: User remains on login page (URL doesn't change to dashboard)
-        expect(self.page).to_have_url(re.compile(r".*/auth/login"))
+        expect(self.page).to_have_url(re.compile(r".*/auth/login$"))
         
         # Assert: Username field is cleared (empty value)
         expect(self.page.get_by_role("textbox", name="Username")).to_have_value("")

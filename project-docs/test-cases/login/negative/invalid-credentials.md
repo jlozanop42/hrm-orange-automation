@@ -80,7 +80,7 @@ Validates that the system properly rejects login attempts with invalid credentia
 ---
 
 ## Notes
-- Username field is not case-sensitive;  "Admin", "ADMIN" and "admin" is valid
+- Username field is not case-sensitive; "Admin", "ADMIN" and "admin" are valid
 - The system does not perform whitespace trimming; spaces are treated as part of the input
 - Error message is generic ("Invalid credentials") for security reasons - does not indicate which field is incorrect
 - Related test cases: TC-LOGIN-001 (Successful Login), TC-LOGIN-004 (Required Field Validation)
